@@ -1,0 +1,60 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-message {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  text-align: right;
+  width: fit-content;
+
+  .my-content {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+.not-my-message {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  text-align: left;
+  width: fit-content;
+
+  .not-my-content {
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+    border-radius: 30px;
+    border-bottom-left-radius: 0px;
+  }
+}
+
+.timestamp {
+  font-size: 10px;
+}
+
+.new-message {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.field {
+  width: 100%;
+}
+
+.send-button {
+  margin-bottom: 20px;
+}

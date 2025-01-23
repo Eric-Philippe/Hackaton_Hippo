@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./Pages/home/home.component";
 import { ActivityTestComponent } from "./Pages/activity-test/activity-test.component";
+import { ChatComponent } from './Pages/chat/chat.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HttpClientModule, ActivityTestComponent, HomeComponent],
+  imports: [HttpClientModule, ActivityTestComponent, HomeComponent, ChatComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
