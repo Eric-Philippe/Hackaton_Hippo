@@ -4,7 +4,7 @@ const alert = require("../controllers/Alert.controller");
 const router = express.Router();
 
 
-router.get("/", alert.getAlerts);
+router.get("/", alert.getAlert);
 
 
 module.exports = (app) => {
