@@ -1,18 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatDrawerContainer, MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule],  
+  imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   providers: [],
 })
 export class HeaderComponent   {
+  showFiller = false;
 
   
 }

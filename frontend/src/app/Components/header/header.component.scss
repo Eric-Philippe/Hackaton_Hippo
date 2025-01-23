@@ -1,0 +1,33 @@
+mat-toolbar {
+    padding: 0; /* Enlever les marges/paddings par défaut du mat-toolbar */
+    background-color: #B94E48; /* Couleur brique */
+    height: 100px;
+    padding-bottom: 20px;
+}
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;  /* Hauteur du header */
+  }
+  
+  .text-container {
+    flex: 1;  /* Cette section prendra toute la place disponible à gauche */
+    display: flex;
+    justify-content: center;  /* Centrer horizontalement */
+    align-items: center;  /* Centrer verticalement */
+    font-size: 24px;
+    font-weight: bold;
+    color: white;  /* Assurez-vous que le texte contraste bien */
+  }
+  
+  .image-container {
+    flex: 1;  /* Cette section prendra toute la place disponible à droite */
+    background-image: url('/img/toulouse.jpg');
+    background-size: cover;  /* L'image couvre toute la surface de la colonne */
+    background-position: center;  /* Centrer l'image */
+    height: 100%;  /* L'image doit couvrir toute la hauteur de la section */
+  }
+  
