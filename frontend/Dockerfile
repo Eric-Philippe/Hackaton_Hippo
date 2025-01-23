@@ -19,7 +19,6 @@ COPY . .
 # Construire l'application Angular pour la production
 RUN npm run build --prod
 
-
 # Étape 2 : Créer l'image de production en utilisant un serveur web léger (Nginx)
 FROM nginx:alpine
 
@@ -27,7 +26,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist/frontend/browser/ /usr/share/nginx/html
 
 # Exposer le port 80 pour que l'application soit accessible via HTTP
-EXPOSE 80
+EXPOSE ${FRONT_PORT}
 
 # Démarrer Nginx en mode non-daemon (en premier plan)
 CMD ["nginx", "-g", "daemon off;"]
