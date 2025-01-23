@@ -61,8 +61,8 @@ router.get("/:id", ChatController.getChatById);
  *               user_pseudo:
  *                 type: string
  *                 example: "kévin"
- *               is_admin:
- *                  type: boolean
+ *               date_time:
+ *                  type: date
  *                  example: False
  *     responses:
  *       201:
@@ -102,6 +102,9 @@ router.post("/add", ChatController.addChat);
  *               is_admin:
  *                  type: boolean
  *                  example: False
+ *               date_time:
+ *                  type: date
+ *                  example: False             
  *     responses:
  *       200:
  *         description: Message mise à jour avec succès.

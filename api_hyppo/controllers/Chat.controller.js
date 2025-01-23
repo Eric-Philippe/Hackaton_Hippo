@@ -25,12 +25,13 @@ async function getChatById(req, res) {
 async function addChat(req, res) {
     try {
         console.log(req.body);
-        const { message, zone, user_pseudo, is_admin } = req.body;
+        const { message, zone, user_pseudo, is_admin, date_time } = req.body;
         const newChat = await ChatService.addChat({ 
             message,
             zone,
             user_pseudo,
             is_admin,
+            date_time
         });
         res.status(201).json(newChat);
     } catch (error) {
