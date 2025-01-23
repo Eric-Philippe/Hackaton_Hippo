@@ -15,10 +15,6 @@ module.exports = (instance) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        // userId: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        // },
         user_pseudo: {
             type: DataTypes.STRING,
             allowNull: false,

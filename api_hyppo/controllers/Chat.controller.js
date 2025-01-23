@@ -18,13 +18,14 @@ async function getChatById(req, res) {
             res.status(200).json(Chat);
         }
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 }
 
 async function addChat(req, res) {
     try {
-        const { message, zone, user_pseudo, is_admin} = req.body;
+        console.log(req.body);
+        const { message, zone, user_pseudo, is_admin } = req.body;
         const newChat = await ChatService.addChat({ 
             message,
             zone,
@@ -33,7 +34,7 @@ async function addChat(req, res) {
         });
         res.status(201).json(newChat);
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 }
 
