@@ -1,7 +1,7 @@
 <mat-card class="mat-card">
   <div>
     <div class="title">
-      <h2>{{ "Discussion zone " + zoneId }}</h2>
+      <h2>{{ "Discussion zone " + zone }}</h2>
     </div>
     <mat-divider></mat-divider>
   </div>
@@ -11,11 +11,13 @@
       <div class="messages">
         @for (message of messages; track message) {
         <div
-          [class]="message.token === myToken ? 'my-message' : 'not-my-message'"
+          [class]="
+            message.username === myUsername ? 'my-message' : 'not-my-message'
+          "
         >
           <div
             [class]="
-              message.token === myToken ? 'my-content' : 'not-my-content'
+              message.username === myUsername ? 'my-content' : 'not-my-content'
             "
           >
             {{ message.content }}
