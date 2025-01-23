@@ -4,7 +4,6 @@ class UserService {
 
   async getActivities() {
     const activities = await Activity.findAll();
-    console.log(activities);
     return activities;
   }
 
