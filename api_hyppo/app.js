@@ -6,6 +6,8 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const http = require("http");
+const { Server } = require("socket.io");
 const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 
 // Importation des routes
@@ -14,6 +16,8 @@ const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
 // CORS
 app.use(
