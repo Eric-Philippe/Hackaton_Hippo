@@ -10,11 +10,14 @@ const http = require("http");
 const { Server } = require("socket.io");
 const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 
+<<<<<<< HEAD
 // Importation des routes
 const chatRoutes = require("./routes/Chat.routes");
 const activityRoutes = require("./routes/Activity.route");
 const alertRoutes = require("./routes/Alert.route");
 
+=======
+>>>>>>> 956fd42 (fix: alert route GET ONLY)
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
 
 const app = express();
@@ -39,6 +42,7 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 // Middleware pour servir la documentation Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+<<<<<<< HEAD
 // Socket.IO - Configuration des événements
 io.on("connection", (socket) => {
   console.log("Un utilisateur est connecté : ", socket.id);
@@ -62,6 +66,15 @@ chatRoutes(app);
 activityRoutes(app);
 alertRoutes(app);
 
+=======
+// Routes
+// Import the routes
+const alertRoutes = require('./routes/Alert.route.js');
+
+// Set up routes
+alertRoutes(app);
+
+>>>>>>> 956fd42 (fix: alert route GET ONLY)
 // ... Autres middlewares
 
 // Si rien n'est trouvé
