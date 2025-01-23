@@ -34,7 +34,15 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
+// Import the routes
+const chatRoutes = require('./routes/chatRoutes');
+const alertRoutes = require('./routes/alertRoutes');
+const activityRoutes = require('./routes/activityRoutes');
 
+// Set up routes
+app.use('/chats', chatRoutes(db));
+app.use('/alerts', alertRoutes(db));
+app.use('/activities', activityRoutes(db));
 // ... Autres middlewares
 
 // Si rien n'est trouvé
