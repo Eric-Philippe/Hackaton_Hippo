@@ -12,41 +12,27 @@ const { DataTypes } = require("sequelize"); {
             allowNull: false,
         },
         zone: {
-            type: DataTypes.STRING,
+            type: DataTypes.interger,
             allowNull: false,
         },
         // userId: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false,
         // },
-        pseudo: {
-            type: DataTypes.INTEGER,
+        user_pseudo: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         is_admin: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
-        },
-        is_bot: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
-        createdAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-        },
+        }
     },
     {
         tableName: "Chat",
         updatedAt: "updatedAt",
         createdAt: "createdAt",
-        timestamps: false,
+        timestamps: true,
     });
 
     return Chat;

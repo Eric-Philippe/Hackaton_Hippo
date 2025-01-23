@@ -1,4 +1,4 @@
-const { Chat } = require("../users");
+const { Chat } = require("../models/index");
 
 async function getAllChats() {
     return await Chat.findAll();
