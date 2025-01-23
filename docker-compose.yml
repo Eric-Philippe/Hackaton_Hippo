@@ -53,21 +53,21 @@ services:
     networks:
       - my_network
 
-  # front:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #     args:
-  #       - FRONT_PORT=${FRONT_PORT}
-  #   ports:
-  #     - "${FRONT_PORT}:${FRONT_PORT}"
-  #   environment:
-  #     - FRONT_PORT=${FRONT_PORT}
-  #     - API_PORT=${API_PORT}
-  #     - API_ADDRESS=${API_ADDRESS}
-  #   volumes:
-  #     - ./frontend:/app
-  #     - front-data:/app/data
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - FRONT_PORT=${FRONT_PORT}
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
+    environment:
+      - FRONT_PORT=${FRONT_PORT}
+      - API_PORT=${API_PORT}
+      - API_ADDRESS=${API_ADDRESS}
+    volumes:
+      - ./frontend:/app
+      - front-data:/app/data
 
 volumes:
   api-data:
