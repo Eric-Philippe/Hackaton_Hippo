@@ -3,15 +3,16 @@ const { Op } = require("sequelize");
 
 class AlertService {
 
-async getAlerts(zone) {
-    const alerts = await Alert.findAll({
+async getAlert(zone) {
+    const latestAlert = await Alert.findOne({
         where: {
             zone: {
                 [Op.like]: `%${zone}%`
             }
-        }
+        },
+        order: [['date_time', 'DESC']]
     });
-    return alerts;
+    return latestAlert;
 }
 
 }

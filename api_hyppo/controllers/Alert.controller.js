@@ -1,9 +1,9 @@
 const alertService = require('../services/Alert.service');
 
-exports.getAlerts = async (req, res) => {
+exports.getAlert = async (req, res) => {
     try {
         const { zone } = req.query;
-        const alerts = await alertService.getAlerts(zone);
+        const alerts = await alertService.getAlert(zone);
 
         res.status(200).send(alerts);
     } catch (error) {
