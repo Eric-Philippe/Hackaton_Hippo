@@ -1,0 +1,23 @@
+<div class="activities-container">
+  <div class="activity-card" *ngFor="let activity of activities">
+    <div class="activity-header">
+      <h3>{{ activity.title }}</h3>
+    </div>
+    <div class="activity-image" *ngIf="activity.url_illustration">
+      <img [src]="activity.url_illustration" />
+    </div>
+    <div class="activity-info">
+      <p><strong>Description : </strong>{{ activity.description }}</p>
+      <p><strong>Zone :</strong> {{ activity.zone }}</p>
+      <p>
+        <strong>Available :  </strong>
+        <span 
+          class="status-dot" 
+          [class.available]="activity.is_available" 
+          [class.unavailable]="!activity.is_available">
+        </span>
+        {{ activity.is_available ? 'Yes' : 'No' }}
+      </p>
+    </div>
+  </div>
+</div>
