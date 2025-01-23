@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-chat',
+  standalone: true,
   imports: [
     MatToolbarModule,
     MatIconModule,
@@ -34,12 +35,12 @@ export class ChatComponent {
     },
     {
       token: 'CestLeTokenDeNico',
-      content: 'T\'as vu y a une innondation en zone 3',
+      content: "T'as vu y a une innondation en zone 3",
       time: new Date(),
     },
     {
       token: 'CestLeTokenDunAutrePelo',
-      content: 'Oui c\'est mouillé',
+      content: "Oui c'est mouillé",
       time: new Date(),
     },
   ];
