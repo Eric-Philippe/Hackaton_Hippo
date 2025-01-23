@@ -37,6 +37,24 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 // Middleware pour servir la documentation Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Socket.IO - Configuration des événements
+io.on("connection", (socket) => {
+  console.log("Un utilisateur est connecté : ", socket.id);
+
+  // Exemple : écouter les messages envoyés par un client
+  socket.on("message", (data) => {
+    console.log("Message reçu : ", data);
+
+    // Diffuser le message à tous les autres clients
+    io.emit("message", data);
+  });
+
+  // Gérer la déconnexion
+  socket.on("disconnect", () => {
+    console.log("Un utilisateur s'est déconnecté : ", socket.id);
+  });
+});
+
 // Routes
 
 // ... Autres middlewares
