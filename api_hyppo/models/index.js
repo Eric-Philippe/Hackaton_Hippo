@@ -9,6 +9,7 @@ const instance = new Sequelize(dbmsConfig);
 // Models
 const models = {};
 models.Chat = require("./Chat.model")(instance);
+models.Activity = require("./Activity.model")(instance);
 
 // // Associations
 Object.keys(models).forEach((modelName) => {
