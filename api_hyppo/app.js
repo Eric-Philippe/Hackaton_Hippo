@@ -7,7 +7,8 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
-
+const roleRoutes = require("./routes/Role.routes");
+const userRoutes = require("./routes/User.routes");
 // Importation des routes
 
 
@@ -34,7 +35,8 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
-
+roleRoutes(app);
+userRoutes(app);
 // ... Autres middlewares
 
 // Si rien n'est trouvé
