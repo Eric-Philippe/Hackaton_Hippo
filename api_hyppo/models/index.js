@@ -6,6 +6,7 @@ const instance = new Sequelize(dbConfig);
 
 // Models
 const models = {};
+models.Activity = require("./Activity.model")(instance);
 
 
 // // Associations
