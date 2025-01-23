@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './Pages/home/home.component';
-import { ActivityTestComponent } from './Pages/activity-test/activity-test.component';
+import { ActivityComponent } from "./Components/activity/activity.component";
 import { ChatComponent } from './Pages/chat/chat.component';
 import { MapComponent } from './Pages/Map/map.component';
 
@@ -10,7 +10,7 @@ import { MapComponent } from './Pages/Map/map.component';
   selector: 'app-root',
   imports: [
     HttpClientModule,
-    ActivityTestComponent,
+    ActivityComponent,
     HomeComponent,
     ChatComponent,
     MapComponent,
