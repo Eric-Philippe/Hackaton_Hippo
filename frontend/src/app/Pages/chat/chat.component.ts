@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ChatService } from '../../Services/chat.service';
+import { Message } from '../../Interfaces/message.interface';
 
 @Component({
   selector: 'app-chat',
@@ -35,57 +37,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 export class ChatComponent implements AfterViewChecked {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
 
-  myToken: string = 'CestLeTokenDeNico';
+  myUsername: string = 'Hippopotame anonyme';
 
-  zoneId: number = 3;
+  zone: number = 3;
 
-  messages: { token: string; content: string; time: Date }[] = [
-    {
-      token: 'CestLeTokenDeNico',
-      content: 'Salut, ça va ?',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: 'Nickel et toi ?',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDeNico',
-      content: "T'as vu y a une innondation en zone 3",
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: "Oui et moi j'innonde le chat",
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: '.',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: '.',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: '.',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: '.',
-      time: new Date(),
-    },
-    {
-      token: 'CestLeTokenDunAutrePelo',
-      content: '.',
-      time: new Date(),
-    },
-  ];
+  messages: Message[] = [];
+
+  constructor(private chatService: ChatService) {
+    this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
+      this.messages = data;
+    });
+  }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -94,5 +56,19 @@ export class ChatComponent implements AfterViewChecked {
   scrollToBottom(): void {
     const container = this.chatContainer.nativeElement;
     container.scrollTop = container.scrollHeight;
+  }
+
+  sendMessage(content: string): void {
+    if (!this.myUsername) {
+      // TODO Générer un nom d'utilisateur aléatoire
+    }
+    const message: Message = {
+      username: this.myUsername,
+      zone: this.zone,
+      content: content,
+      time: new Date(),
+      isAdmin: false,
+    };
+    //this.chatService.sendMessage(message).subscribe()
   }
 }
