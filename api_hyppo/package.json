@@ -26,6 +26,7 @@
     "nodemailer": "^6.9.16",
     "sequelize": "^6.37.4",
     "serve-favicon": "^2.5.0",
+    "socket.io": "^4.8.1",
     "sqlite3": "^5.1.7",
     "statuses": "^2.0.1",
     "swagger": "^0.0.1",

@@ -15,4 +15,6 @@ const { DataTypes } = require("sequelize"); {
             allowNull: false,
         },
     });
-}
+
+    return Chat;
+};
