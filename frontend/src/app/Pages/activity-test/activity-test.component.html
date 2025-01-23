@@ -4,12 +4,20 @@
         <h3>{{ activity.title }}</h3>
       </div>
       <div class="activity-image" *ngIf="activity.url_illustration">
-        <img [src]="activity.url_illustration" alt="{{ activity.title }}" />
+        <img [src]="activity.url_illustration" />
       </div>
       <div class="activity-info">
-        <p>{{ activity.description }}</p>
-        <p><strong>Location:</strong> {{ activity.location }}</p>
-        <p><strong>Available:</strong> {{ activity.available ? 'Yes' : 'No' }}</p>
+        <p><strong>Déscription : </strong>{{ activity.description }}</p>
+        <p><strong>Zone :</strong> {{ activity.zone }}</p>
+        <p>
+          <strong>Available :  </strong>
+          <span 
+            class="status-dot" 
+            [class.available]="activity.is_available" 
+            [class.unavailable]="!activity.is_available">
+          </span>
+          {{ activity.is_available ? 'Yes' : 'No' }}
+        </p>
       </div>
     </div>
   </div>

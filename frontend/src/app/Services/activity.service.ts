@@ -18,42 +18,38 @@ export class ActivityService {
     return of([
       {
         activity_id: 1,
-        title: 'Randonnée en montagne',
+        title: 'Randonnée',
         description: 'Découvrez la nature en toute sécurité.',
-        url_illustration: 'https://via.placeholder.com/150',
-        available: true,
-        location: 'Alpes françaises',
-        is_seism_tolerant: true,
-        is_tsunami_tolerant: false
+        url_illustration: '',
+        is_available: true,
+        zone: 'Toulouse',
+        type:"Seisme",
       },
       {
         activity_id: 2,
         title: 'Plongée sous-marine',
         description: 'Explorez les fonds marins riches.',
-        url_illustration: 'https://via.placeholder.com/150',
-        available: false,
-        location: 'Côte d’Azur',
-        is_seism_tolerant: false,
-        is_tsunami_tolerant: true
+        url_illustration: '',
+        is_available: false,
+        zone: 'La Garonne',
+        type:"Inondation",
       },
       {
-        activity_id: 2,
-        title: 'Plongée sous-marine',
-        description: 'Explorez les fonds marins riches.',
-        url_illustration: 'https://via.placeholder.com/150',
-        available: false,
-        location: 'Côte d’Azur',
-        is_seism_tolerant: false,
-        is_tsunami_tolerant: true
+        activity_id: 3,
+        title: 'Vélo',
+        description: 'Tour de Blagnac',
+        url_illustration: '',
+        is_available: false,
+        zone: 'Blagnac',
+        type:"Seisme",
       },      {
-        activity_id: 1,
-        title: 'Randonnée en montagne',
-        description: 'Découvrez la nature en toute sécurité.',
-        url_illustration: 'https://via.placeholder.com/150',
-        available: true,
-        location: 'Alpes françaises',
-        is_seism_tolerant: true,
-        is_tsunami_tolerant: false
+        activity_id: 4,
+        title: 'JetSki',
+        description: 'JetSki sur la Garonne',
+        url_illustration: '',
+        is_available: true,
+        zone: 'Balma',
+        type:"Inondation",
       },
     ]);
   }
@@ -64,8 +60,7 @@ export interface Activity {
   title: string;
   description: string;
   url_illustration: string | null;
-  available: boolean;
-  location: string;
-  is_seism_tolerant: boolean;
-  is_tsunami_tolerant: boolean;
+  is_available: boolean;
+  zone: string;
+  type:string;
 }
