@@ -8,9 +8,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 
-// Importation des routes
-
-
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
 
 const app = express();
@@ -35,14 +32,11 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 // Import the routes
-const chatRoutes = require('./routes/chatRoutes');
-const alertRoutes = require('./routes/alertRoutes');
-const activityRoutes = require('./routes/activityRoutes');
+const alertRoutes = require('./routes/Alert.route.js');
 
 // Set up routes
-app.use('/chats', chatRoutes(db));
-app.use('/alerts', alertRoutes(db));
-app.use('/activities', activityRoutes(db));
+alertRoutes(app);
+
 // ... Autres middlewares
 
 // Si rien n'est trouvé
