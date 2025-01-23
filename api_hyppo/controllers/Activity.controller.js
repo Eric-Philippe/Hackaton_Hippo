@@ -6,12 +6,12 @@ exports.getActivities = async (req, res) => {
         const activities = await activitiesService.getActivities(zone);
         const alert = 
             {
-              "id": 1,
-              "Title": "Running",
-              "zones": "1, 2, 5",
-              "type": "seisme",
-              "date_time": "2025-23-01T15:00:00.000Z",
-              "niveau": 6
+                "id": 1,
+                "Title": "Running",
+                "zones": "1, 2, 5",
+                "type": "seisme",
+                "date_time": "2025-23-01T15:00:00.000Z",
+                "niveau": 6
             };
 
         var filtredActivities = [];

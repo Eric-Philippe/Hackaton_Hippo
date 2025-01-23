@@ -6,6 +6,7 @@ module.exports = (instance) => {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            allowNull: false,
         },
         message: {
             type: DataTypes.STRING,

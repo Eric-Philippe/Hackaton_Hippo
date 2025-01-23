@@ -5,7 +5,7 @@ async function getAllChats(req, res) {
         const Chats = await ChatService.getAllChats();
         res.status(200).json(Chats);
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -47,7 +47,7 @@ async function updateChat(req, res) {
         res.status(200).json(updatedChat);
         }
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 }
 
@@ -60,7 +60,7 @@ async function deleteChat(req, res) {
         res.status(200).json({ message: "Chat deleted successfully" });
         }
     } catch (error) {
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: error.message });
     }
 }
 
