@@ -23,7 +23,11 @@ module.exports = (instance) => {
         is_admin: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
-        }
+        },
+        date_time: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
     },
     {
         tableName: "Chat",
