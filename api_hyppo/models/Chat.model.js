@@ -12,7 +12,7 @@ module.exports = (instance) => {
             allowNull: false,
         },
         zone: {
-            type: DataTypes.interger,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         // userId: {

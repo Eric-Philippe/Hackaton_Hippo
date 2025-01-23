@@ -30,7 +30,7 @@ router.get("/all", ChatController.getAllChats);
  *         required: true
  *         schema:
  *           type: integer
- *         description: ID de l'Chaté
+ *         description: ID du message
  *     responses:
  *       200:
  *         description: Chaté récupérée avec succès.
@@ -90,10 +90,18 @@ router.post("/add", ChatController.addChat);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               message:
  *                 type: string
- *               denomination:
+ *                 example: "Salut les potos"
+ *               zone:
+ *                 type: integer
+ *                 example: 3
+ *               user_pseudo:
  *                 type: string
+ *                 example: "kévin"
+ *               is_admin:
+ *                  type: boolean
+ *                  example: False
  *     responses:
  *       200:
  *         description: Message mise à jour avec succès.
