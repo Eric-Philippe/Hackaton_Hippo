@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Activity, ActivityService } from '../../../Services/activity.service';
+import { Activity, ActivityService } from '../../Services/activity.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 

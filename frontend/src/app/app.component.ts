@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./Pages/home/home.component";
-import { ActivityComponent } from "./Components/header/activity/activity.component";
+import { ActivityComponent } from "./Components/activity/activity.component";
 
 
 @Component({
