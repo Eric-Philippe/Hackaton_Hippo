@@ -6,7 +6,7 @@ class AlertService {
 async getAlert(zone) {
     const latestAlert = await Alert.findOne({
         where: {
-            zone: {
+            zones: {
                 [Op.like]: `%${zone}%`
             }
         },
