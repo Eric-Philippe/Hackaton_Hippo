@@ -1,28 +1,39 @@
-<div class="chat">
+<mat-card class="mat-card">
   <div>
-    <div class="messages">
-      @for (message of messages; track message) {
-      <div
-        [class]="message.token === myToken ? 'my-message' : 'not-my-message'"
-      >
+    <div class="title">
+      <h2>{{ "Discussion zone " + zoneId }}</h2>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <br />
+  <div class="chat" #chatContainer>
+    <div class="scroll">
+      <div class="messages">
+        @for (message of messages; track message) {
         <div
-          [class]="message.token === myToken ? 'my-content' : 'not-my-content'"
+          [class]="message.token === myToken ? 'my-message' : 'not-my-message'"
         >
-          {{ message.content }}
+          <div
+            [class]="
+              message.token === myToken ? 'my-content' : 'not-my-content'
+            "
+          >
+            {{ message.content }}
+          </div>
+          <div class="timestamp">{{ message.time | date : "shortTime" }}</div>
         </div>
-        <div class="timestamp">{{ message.time | date : "shortTime" }}</div>
+        }
       </div>
-      }
+    </div>
+
+    <div class="new-message">
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Votre message</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button class="send-button" mat-button color="primary">
+        <mat-icon>send</mat-icon>
+      </button>
     </div>
   </div>
-
-  <div class="new-message">
-    <mat-form-field class="field" appearance="outline">
-      <mat-label>Votre message</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <button class="send-button" mat-button color="primary">
-      <mat-icon>send</mat-icon>
-    </button>
-  </div>
-</div>
+</mat-card>
