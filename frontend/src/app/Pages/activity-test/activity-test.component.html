@@ -10,12 +10,12 @@
         <p><strong>Déscription : </strong>{{ activity.description }}</p>
         <p><strong>Zone :</strong> {{ activity.zone }}</p>
         <p>
-          <strong>Available : </strong>
-          <span
-            class="status-dot"
-            [class.is_available]="activity.is_available"
-            [class.unavailable]="!activity.is_available"
-          ></span>
+          <strong>Available :  </strong>
+          <span 
+            class="status-dot" 
+            [class.available]="activity.is_available" 
+            [class.unavailable]="!activity.is_available">
+          </span>
           {{ activity.is_available ? 'Yes' : 'No' }}
         </p>
       </div>
