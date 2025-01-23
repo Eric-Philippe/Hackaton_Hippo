@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 
 // Importation des routes
+const activityRoutes = require("./routes/Activity.route");
 
 
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
@@ -34,6 +35,7 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
+activityRoutes(app);
 
 // ... Autres middlewares
 
