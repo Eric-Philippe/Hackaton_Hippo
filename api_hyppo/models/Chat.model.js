@@ -25,8 +25,28 @@ const { DataTypes } = require("sequelize"); {
         },
         is_admin: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
         },
+        is_bot: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        },
+    },
+    {
+        tableName: "Chat",
+        updatedAt: "updatedAt",
+        createdAt: "createdAt",
+        timestamps: false,
     });
 
     return Chat;
