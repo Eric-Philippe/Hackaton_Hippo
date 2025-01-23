@@ -4,6 +4,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  OnInit,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -33,13 +34,11 @@ const SELECTED_GRAVE_COLOR = '#80EF80';
   styleUrls: ['./map.component.css'],
   providers: [],
 })
-export class MapComponent implements OnChanges {
+export class MapComponent implements OnInit {
   constructor(private http: HttpClient, private renderer: Renderer2) {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['lots']?.currentValue?.length) {
-      this.loadSVG();
-    }
+  ngOnInit() {
+    this.loadSVG();
   }
 
   setupPanZoom(reset = false) {
