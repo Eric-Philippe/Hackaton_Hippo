@@ -6,8 +6,8 @@ import { MapComponent } from './Pages/Map/map.component';
 
 export const routes: Routes = [
   { path: '', component: MapComponent }, // Route par défaut
-  { path: 'info', component: InfoComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: ':zone/info', component: InfoComponent },
+  { path: ':zone/chat', component: ChatComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirection pour les routes non trouvées
 ];
 
