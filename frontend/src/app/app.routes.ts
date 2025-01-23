@@ -6,12 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapComponent } from './Pages/Map/map.component';
 
 export const routes: Routes = [
-
-  { path: '', component: MapComponent } // Route par défaut
-  { path: 'home', component: HomeComponent }
-  { path: 'info', component: InfoComponent }, 
+  { path: '', component: MapComponent }, // Route par défaut
+  { path: 'home', component: HomeComponent },
+  { path: 'info', component: InfoComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }, // Redirection pour les routes non trouvées
-
 ];
 
 @NgModule({
