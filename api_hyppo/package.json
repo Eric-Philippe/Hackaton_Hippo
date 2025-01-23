@@ -24,6 +24,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.3",
     "nodemailer": "^6.9.16",
+    "pg": "^8.13.1",
     "sequelize": "^6.37.4",
     "serve-favicon": "^2.5.0",
     "socket.io": "^4.8.1",
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "nodemon": "^3.1.7",
+    "nodemon": "^3.1.9",
     "supertest": "^7.0.0"
   },
   "jest": {
