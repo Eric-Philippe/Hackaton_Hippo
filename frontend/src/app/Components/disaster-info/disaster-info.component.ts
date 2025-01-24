@@ -15,7 +15,8 @@ export class DisasterInfoComponent {
   constructor(private infoService: InfoService) {}
 
   ngOnInit(): void {
-    this.infoService.getDisaster().subscribe((data) => {
+    const zone = 1;
+    this.infoService.getDisaster(zone).subscribe((data) => {
       this.disastersInfo = data;
     });
   }

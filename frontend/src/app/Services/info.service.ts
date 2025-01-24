@@ -8,12 +8,11 @@ import { Observable, of } from 'rxjs';
 export class InfoService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'https://api.example.com/alert'; // R
+  private apiUrl = 'http://localhost:8001/alert'; // R
 
-  getDisaster(): Observable<DisasterInfo[]> {
-    return this.http.get<DisasterInfo[]>(this.apiUrl);
+  getDisaster(zone: number): Observable<DisasterInfo[]> {
+    return this.http.get<DisasterInfo[]>(`${this.apiUrl}/?zone=${zone}`);
   }
-
 }
 export interface DisasterInfo {
   disaster_Id: number;
