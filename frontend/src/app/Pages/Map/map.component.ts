@@ -1,30 +1,22 @@
-import {
-  Component,
-  Renderer2,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, Renderer2, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 
-import svgPanZoom from 'svg-pan-zoom';
-import { CommonModule } from '@angular/common';
+import svgPanZoom, { pan } from 'svg-pan-zoom';
 
 const DEFAULT_SVG_PAN_OPTIONS = {
   zoomEnabled: true,
   controlIconsEnabled: true,
   center: true,
-  minZoom: 0.9,
-  maxZoom: 10,
+  minZoom: 1,
+  maxZoom: 3,
   zoomScaleSensitivity: 0.5,
   contain: true,
+  fit: true,
+  panLimit: true,
 };
-
-const SELECTED_GRAVE_COLOR = '#80EF80';
 
 @Component({
   standalone: true,
@@ -41,22 +33,6 @@ export class MapComponent implements OnInit {
     this.loadSVG();
   }
 
-  setupPanZoom(reset = false) {
-    const svgElement = document.getElementById('gravemap-svg');
-    if (svgElement) {
-      const panZoomInstance = svgPanZoom(svgElement, DEFAULT_SVG_PAN_OPTIONS);
-      if (reset) {
-        panZoomInstance.reset();
-      }
-
-      panZoomInstance.zoom(1.5);
-      panZoomInstance.pan({
-        x: svgElement.clientWidth / 5,
-        y: svgElement.clientHeight / 20,
-      });
-    }
-  }
-
   private loadSVG() {
     this.http
       .get('/toulousemap.svg', { responseType: 'text' })
@@ -67,10 +43,75 @@ export class MapComponent implements OnInit {
           const svgElement = svgContainer.querySelector('svg') as SVGElement;
           svgElement.id = 'gravemap-svg';
           svgElement.setAttribute('width', '100%');
-          svgElement.setAttribute('height', '100%');
+          svgElement.setAttribute('height', '70vh');
+          svgElement.style.borderRadius = '20px';
+
           this.setupPanZoom();
+          this.addInteractions(svgElement);
         }
       });
+  }
+
+  setupPanZoom() {
+    const svgElement = document.getElementById('gravemap-svg');
+    if (svgElement) {
+      const panZoomInstance = svgPanZoom(svgElement, DEFAULT_SVG_PAN_OPTIONS);
+      panZoomInstance.reset();
+    }
+  }
+
+  private addInteractions(svgElement: SVGElement) {
+    // Query selector all that goes through all the
+    const pathElements = Array.from(
+      svgElement.querySelectorAll('[id*="PATH"]')
+    );
+
+    pathElements.forEach((element) => {
+      const numZone = parseInt(element.id.replace('PATH', ''));
+      this.addInteraction(element, numZone);
+    });
+  }
+
+  private addInteraction(element: Element, numZone: number) {
+    this.applyInitialStyle(element, numZone);
+    this.renderer.listen(element, 'mouseover', () =>
+      this.applyHoverStyle(element, numZone)
+    );
+    this.renderer.listen(element, 'mouseout', () =>
+      this.applyInitialStyle(element, numZone)
+    );
+    this.renderer.listen(element, 'click', () => this.selectZone(numZone));
+  }
+
+  private applyInitialStyle(element: Element, numZone: number) {
+    this.renderer.setStyle(element, 'fill', this.getZoneColor(numZone));
+    this.renderer.setStyle(element, 'fill-opacity', '0.5');
+  }
+
+  private applyHoverStyle(element: Element, numZone: number) {
+    this.renderer.setStyle(
+      element,
+      'fill',
+      this.darkenColor(this.getZoneColor(numZone))
+    );
+    this.renderer.setStyle(element, 'fill-opacity', '0.8');
+  }
+
+  private getZoneColor(numZone: number): string {
+    switch (numZone) {
+      case 1:
+        return '#FF0000';
+      case 2:
+        return '#00FF00';
+      case 3:
+        return '#0000FF';
+      case 4:
+        return '#FFFF00';
+      case 5:
+        return '#00FFFF';
+      default:
+        return '#000000';
+    }
   }
 
   private darkenColor(color: string): string {
@@ -102,5 +143,11 @@ export class MapComponent implements OnInit {
     const svgElement = document.getElementById('gravemap-svg');
     if (svgElement)
       svgPanZoom(svgElement, DEFAULT_SVG_PAN_OPTIONS).panBy({ x: 0, y: -50 });
+  }
+
+  selectZone(numZone: number) {
+    localStorage.setItem('selectedZone', numZone.toString());
+    // Redirect to the zone page
+    window.location.href = `/${numZone}/chat`;
   }
 }
