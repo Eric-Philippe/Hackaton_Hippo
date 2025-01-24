@@ -1,5 +1,4 @@
 const ChatService = require("../services/Chat.service");
-const alertsService = require('../services/Alert.service');
 
 async function getAllChats(req, res) {
     try {
