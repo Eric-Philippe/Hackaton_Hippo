@@ -2,6 +2,7 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
@@ -15,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ChatService } from '../../Services/chat.service';
 import { Message } from '../../Interfaces/message.interface';
+import { SessionService } from '../../Services/session.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -29,23 +32,36 @@ import { Message } from '../../Interfaces/message.interface';
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
+    FormsModule,
   ],
   providers: [DatePipe],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
 })
-export class ChatComponent implements AfterViewChecked {
+export class ChatComponent implements AfterViewChecked, OnInit {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
 
-  myUsername: string = 'Hippopotame anonyme';
-
+  myUsername: string = 'Anonymous';
+  newMessage: string = '';
   zone: number = 3;
 
   messages: Message[] = [];
 
-  constructor(private chatService: ChatService) {
+  constructor(
+    private chatService: ChatService,
+    private sessionService: SessionService
+  ) {}
+
+  ngOnInit(): void {
+    const path = window.location.pathname.split('/');
+
+    if (path.length > 2) {
+      this.zone = parseInt(path[1]);
+    }
+
     this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
       this.messages = data;
+      console.log(this.messages);
     });
   }
 
@@ -58,17 +74,20 @@ export class ChatComponent implements AfterViewChecked {
     container.scrollTop = container.scrollHeight;
   }
 
-  sendMessage(content: string): void {
-    if (!this.myUsername) {
-      // TODO Générer un nom d'utilisateur aléatoire
-    }
+  public sendMessage(): void {
+    this.myUsername = this.sessionService.getUsername();
+    console.log(this.myUsername);
+    console.log(this.newMessage);
+
     const message: Message = {
       username: this.myUsername,
       zone: this.zone,
-      content: content,
+      content: this.newMessage,
       time: new Date(),
       isAdmin: false,
     };
-    //this.chatService.sendMessage(message).subscribe()
+    this.chatService.sendMessage(message, this.zone).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

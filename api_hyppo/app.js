@@ -14,7 +14,7 @@ const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 const chatRoutes = require("./routes/Chat.routes");
 const activityRoutes = require("./routes/Activity.route");
 const alertRoutes = require("./routes/Alert.route");
-const addData = require('./routes/Data.route');
+const addData = require("./routes/Data.route");
 
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
 
@@ -25,7 +25,7 @@ const io = new Server(server);
 // CORS
 app.use(
   cors({
-    origin: process.env.VITE_FRONT_URL,
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
