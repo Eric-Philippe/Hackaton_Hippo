@@ -17,7 +17,7 @@
     "Alert": [
         {"title": "Inondation en zone 2", "zones": "2", "type": "inondation", "date_time": "2025-01-25 10:00:00", "level": 6},
         {"title": "Séisme en zone 3", "zones": "3", "type": "seisme", "date_time": "2025-01-25 11:00:00", "level": 4},
-        {"title": "Inondation en zone 4", "zones": "4", "type": "inondation", "date_time": "2025-01-25 12:00:00", "level": 7},
+        {"title": "Inondation en zone 3 et 4", "zones": "3, 4", "type": "inondation", "date_time": "2025-01-25 12:00:00", "level": 7},
         {"title": "Séisme en zone 5", "zones": "5", "type": "seisme", "date_time": "2025-01-25 13:00:00", "level": 8},
         {"title": "Inondation en zone 1", "zones": "1", "type": "inondation", "date_time": "2025-01-25 14:00:00", "level": 5}
     ]
