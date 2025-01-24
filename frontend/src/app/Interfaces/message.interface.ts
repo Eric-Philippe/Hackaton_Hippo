@@ -1,7 +1,7 @@
 export interface Message {
-  username: string;
+  user_pseudo: string;
   zone: number;
-  content: string;
-  time: Date;
-  isAdmin: boolean;
+  message: string;
+  date_time: Date;
+  is_admin: boolean;
 }

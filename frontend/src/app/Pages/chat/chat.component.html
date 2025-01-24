@@ -12,17 +12,21 @@
         @for (message of messages; track message) {
         <div
           [class]="
-            message.username === myUsername ? 'my-message' : 'not-my-message'
+            message.user_pseudo === myUsername ? 'my-message' : 'not-my-message'
           "
         >
           <div
             [class]="
-              message.username === myUsername ? 'my-content' : 'not-my-content'
+              message.user_pseudo === myUsername
+                ? 'my-content'
+                : 'not-my-content'
             "
           >
-            {{ message.content }}
+            {{ message.message }}
           </div>
-          <div class="timestamp">{{ message.time | date : "shortTime" }}</div>
+          <div class="timestamp">
+            {{ message.date_time | date : "shortTime" }}
+          </div>
         </div>
         }
       </div>
