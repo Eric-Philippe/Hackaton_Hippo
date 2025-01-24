@@ -1,15 +1,24 @@
 <div class="activities-container">
   <div class="activity-card" *ngFor="let activity of activities">
     <div class="activity-header">
-      <h3>{{ activity.title }}</h3>
+      <h3>
+        {{ activity.title }}
+      </h3>
     </div>
     <div class="activity-image" *ngIf="activity.url_illustration">
-      <img [src]="activity.url_illustration" />
+      <img [src]="activity.url_illustration" alt="Illustration for {{ activity.title }}" />
     </div>
     <div class="activity-info">
-      <p><strong>Description : </strong>{{ activity.description }}</p>
-      <p><strong>Zone :</strong> {{ activity.zone }}</p>
       <p>
+        <span class="material-icons">description</span>
+        <strong>Description :</strong> {{ activity.description }}
+      </p>
+      <p>
+        <span class="material-icons">place</span>
+        <strong>Zone :</strong> {{ activity.zone }}
+      </p>
+      <p>
+        <span class="material-icons">check_circle</span>
         <strong>Available :  </strong>
         <span 
           class="status-dot" 
