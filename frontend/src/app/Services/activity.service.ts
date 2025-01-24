@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class ActivityService {
-  private apiUrl = 'https://api.example.com/activities'; // Remplacez par l'URL réelle de l'API
+  private apiUrl = 'https://localhost:8001/activitées'; // Remplacez par l'URL réelle de l'API
 
   constructor(private http: HttpClient) {}
 
@@ -20,16 +20,16 @@ export class ActivityService {
         activity_id: 1,
         title: 'Randonnée',
         description: 'Découvrez la nature en toute sécurité.',
-        url_illustration: '',
+        url_illustration: 'https://i.postimg.cc/cHmXwqFv/test.jpg',
         is_available: true,
         zone: 'Toulouse',
         type: 'Seisme',
       },
       {
         activity_id: 2,
-        title: 'Plongée sous-marine',
-        description: 'Explorez les fonds marins riches.',
-        url_illustration: '',
+        title: 'Natation',
+        description: 'Natation dans la Garonne',
+        url_illustration: 'https://i.postimg.cc/cHmXwqFv/test.jpg',
         is_available: false,
         zone: 'La Garonne',
         type: 'Inondation',
@@ -38,7 +38,7 @@ export class ActivityService {
         activity_id: 3,
         title: 'Vélo',
         description: 'Tour de Blagnac',
-        url_illustration: '',
+        url_illustration: 'https://i.postimg.cc/cHmXwqFv/test.jpg',
         is_available: false,
         zone: 'Blagnac',
         type: 'Seisme',
@@ -47,7 +47,7 @@ export class ActivityService {
         activity_id: 4,
         title: 'JetSki',
         description: 'JetSki sur la Garonne',
-        url_illustration: '',
+        url_illustration: 'https://i.postimg.cc/cHmXwqFv/test.jpg',
         is_available: true,
         zone: 'Balma',
         type: 'Inondation',
