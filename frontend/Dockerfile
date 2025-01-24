@@ -19,14 +19,16 @@ COPY . .
 # Construire l'application Angular pour la production
 RUN npm run build --prod
 
-# Étape 2 : Créer l'image de production en utilisant un serveur web léger (Nginx)
-FROM nginx:alpine
+# Étape 2 : Créer l'image de production en utilisant Caddy
+FROM caddy:alpine
 
-# Copier les fichiers de build depuis l'étape précédente dans le répertoire par défaut de Nginx
-COPY --from=build /app/dist/frontend/browser/ /usr/share/nginx/html
+# Copier les fichiers de build depuis l'étape précédente dans le répertoire par défaut de Caddy
+COPY --from=build /app/dist/frontend/browser/ /usr/share/caddy
 
-# Exposer le port 80 pour que l'application soit accessible via HTTP
+# Copier un fichier Caddyfile personnalisé
+COPY Caddyfile /etc/caddy/Caddyfile
+
+# Exposer le port 80 pour HTTP (ou 443 si HTTPS est utilisé)
 EXPOSE ${FRONT_PORT}
 
-# Démarrer Nginx en mode non-daemon (en premier plan)
-CMD ["nginx", "-g", "daemon off;"]
+# La commande de démarrage est déjà incluse dans l'image officielle de Caddy

@@ -68,6 +68,8 @@ services:
     volumes:
       - ./frontend:/app
       - front-data:/app/data
+    networks:
+      - my_network
 
 volumes:
   api-data:

@@ -2,9 +2,11 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -34,22 +36,34 @@ import { Message } from '../../Interfaces/message.interface';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
 })
-export class ChatComponent implements AfterViewChecked {
+export class ChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
+  @ViewChild('messageInput') private messageInput!: ElementRef;
 
-  myUsername: string = 'Hippopotame anonyme';
+  myUsername?: string;
 
-  zone: number = 3;
+  zone?: number;
 
   messages: Message[] = [];
 
-  constructor(private chatService: ChatService) {
-    this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
+  constructor(
+    private chatService: ChatService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.zone = this.route.snapshot.params['zone'];
+    this.chatService.getMessagesByZone(this.zone!).subscribe((data) => {
       this.messages = data;
     });
+    setInterval(() => {
+      this.chatService.getMessagesByZone(this.zone!).subscribe((data) => {
+        this.messages = data;
+      });
+    }, 2000);
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
 
@@ -58,17 +72,51 @@ export class ChatComponent implements AfterViewChecked {
     container.scrollTop = container.scrollHeight;
   }
 
-  sendMessage(content: string): void {
+  sendMessage(): void {
     if (!this.myUsername) {
-      // TODO Générer un nom d'utilisateur aléatoire
+      const adjectives = [
+        'Rapide',
+        'Brave',
+        'Cool',
+        'Sympa',
+        'Heureux',
+        'Malicieux',
+        'Lumineux',
+        'Chanceux',
+      ];
+      const nouns = [
+        'Manchot',
+        'Tigre',
+        'Cheval',
+        'Renard',
+        'Dragon',
+        'Corbeau',
+        'Loup',
+        'Panda',
+      ];
+
+      const randomAdjective =
+        adjectives[Math.floor(Math.random() * adjectives.length)];
+      const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+      const randomNumber = Math.floor(Math.random() * 1000); // Ajoute un chiffre aléatoire pour l'unicité
+
+      this.myUsername = `${randomNoun}${randomAdjective}${randomNumber}`;
     }
+    let contentValue = this.messageInput.nativeElement.value;
     const message: Message = {
       username: this.myUsername,
-      zone: this.zone,
-      content: content,
+      zone: this.zone!,
+      content: contentValue,
       time: new Date(),
       isAdmin: false,
     };
-    //this.chatService.sendMessage(message).subscribe()
+    if (contentValue.trim() !== '') {
+      this.messageInput.nativeElement.value = '';
+      this.chatService.sendMessage(message).subscribe((response) => {
+        console.log('Message envoyé avec succès', response);
+      }, (error) => {
+        console.error('Erreur lors de l\'envoi du message', error);
+      });
+    }
   }
 }

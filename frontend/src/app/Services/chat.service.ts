@@ -15,8 +15,8 @@ export class ChatService {
     return this.http.get<Message[]>(`${this.apiUrl}/zone/${zone}`);
   }
 
-  sendMessage(message: Message,zone: number): Observable<Message> {
-    return this.http.post<Message>(`${this.apiUrl}/add/${zone}`, message);
+  sendMessage(message: Message): Observable<Message> {
+    return this.http.post<Message>(`${this.apiUrl}/add`, message);
   }
   
 }

@@ -1,0 +1,7 @@
+:80 {
+    root * /usr/share/caddy
+    file_server
+
+    # Rediriger toutes les routes Angular vers index.html
+    try_files {path} /index.html
+}

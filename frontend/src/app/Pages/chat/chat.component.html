@@ -31,9 +31,9 @@
     <div class="new-message">
       <mat-form-field class="field" appearance="outline">
         <mat-label>Votre message</mat-label>
-        <input matInput />
+        <input matInput #messageInput/>
       </mat-form-field>
-      <button class="send-button" mat-button color="primary">
+      <button class="send-button" mat-button color="primary" (click)="sendMessage()">
         <mat-icon>send</mat-icon>
       </button>
     </div>
