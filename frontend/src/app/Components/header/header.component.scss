@@ -1,6 +1,6 @@
 mat-toolbar {
   padding: 0;
-  background-color: #B94E48; /* Couleur brique */
+  background-color: #b94e48; /* Couleur brique */
   color: white; /* Couleur du texte */
   height: auto; /* Ajuste automatiquement la hauteur au contenu */
 }
@@ -12,33 +12,33 @@ mat-toolbar {
   width: 100%;
 }
 
-.top-container {
+.header-head {
   display: flex;
+}
+
+.top-container {
   justify-content: space-between; /* Sépare le titre et l'image */
   align-items: center;
-  // padding: 10px 20px; /* Ajoute un espace autour du contenu */
 }
 
 .text-container {
   flex: 1; /* Cette section prendra toute la place disponible à gauche */
-  padding: 10px 0;
+  align-content: center;
+  text-align: center;
 }
 
 .site-title {
   font-size: 24px; /* Taille du titre */
   font-weight: bold; /* Gras pour le titre */
   color: white; /* Assurez-vous que le titre contraste bien */
-  margin-left: 250px; /* Déplace manuellement le titre à droite */
-  margin-bottom: 100px; /* Déplace manuellement le titre vers le bas */
-  margin-top: 150px; /* Déplace manuellement le titre vers le bas */
-  position: static ; /* Active le déplacement avec top/left */
-  top: 10px; /* Déplacement vertical */
-  left: 20px; /* Déplacement horizontal */
+  position: static; /* Active le déplacement avec top/left */
+  margin: 1rem;
+  text-decoration: none;
 }
 
 .image-container {
   flex: 1; /* Prend tout l'espace disponible à droite */
-  background-image: url('/img/toulouse.jpg'); /* Image de fond */
+  background-image: url("/img/toulouse.jpg"); /* Image de fond */
   background-size: cover; /* Couvre toute la surface */
   background-position: center; /* Centre l'image */
   height: 100px; /* Hauteur fixe de l'image */
@@ -46,28 +46,18 @@ mat-toolbar {
 
 .menu-tabs {
   display: flex;
-  justify-content: center; /* Centre le menu horizontalement */
-  gap: 70px; /* Ajoute de l'espacement entre les boutons */
-  // padding: 10px 0; /* Espacement vertical autour du menu */
-  background-color: #B94E48; /* Garde la même couleur que la barre */
-  border-top: 2px solid rgba(255, 255, 255, 0.3); /* Ligne de séparation subtile */
+  border-top: 2px solid #c45c57; /* Ligne de séparation subtile */
+  a {
+    text-align: center;
+    width: 50%;
+    color: white; /* Couleur du texte des boutons */
+    font-size: 16px; /* Taille du texte */
+    text-transform: none; /* Empêche le texte en majuscules */
+    border-bottom: 2px solid transparent; /* Ligne invisible par défaut */
+    padding: 10px 10px; /* Ajoute un peu d'espace interne */
+    text-decoration: none;
+  }
+  a:hover {
+    background-color: #c45c57;
+  }
 }
-
-.menu-tabs button {
-  color: white; /* Couleur du texte des boutons */
-  font-size: 16px; /* Taille du texte */
-  text-transform: none; /* Empêche le texte en majuscules */
-  border-bottom: 2px solid transparent; /* Ligne invisible par défaut */
-  padding: 10px 10px; /* Ajoute un peu d'espace interne */
-  cursor: pointer; /* Change le curseur au survol */
-}
-
-.menu-tabs button.active-tab {
-  border-bottom: 2px solid white; /* Soulignement blanc pour l'onglet actif */
-  font-weight: bold; /* Gras pour le bouton actif */
-}
-
-.menu-tabs button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Effet visuel au survol */
-}
-

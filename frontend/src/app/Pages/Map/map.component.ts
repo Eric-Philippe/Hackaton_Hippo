@@ -148,6 +148,6 @@ export class MapComponent implements OnInit {
   selectZone(numZone: number) {
     localStorage.setItem('selectedZone', numZone.toString());
     // Redirect to the zone page
-    window.location.href = `/${numZone}/chat`;
+    window.location.href = `/${numZone}/info`;
   }
 }

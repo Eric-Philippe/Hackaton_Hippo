@@ -3,18 +3,19 @@
     <!-- Titre et image -->
     <div class="top-container">
       <!-- Titre -->
-      <div class="text-container">
-        <span class="site-title">ToulouseWatch</span>
-        <div class="menu-tabs" *ngIf="showMenu">
-          <button mat-button routerLink="/info" routerLinkActive="active-tab">Informations</button>
-          <button mat-button routerLink="/chat" routerLinkActive="active-tab">Discussion zone 2</button>
+      <div class="header-head">
+        <div class="text-container">
+          <a href="/" class="site-title">ToulouseWatch</a>
         </div>
+        <!-- Image à droite -->
+        <div class="image-container"></div>
       </div>
-
-
-      <!-- Image à droite -->
-      <div class="image-container"></div>
-
+      <div class="menu-tabs" *ngIf="showMenu">
+        <a href="{{ zone }}/info" routerLinkActive="active-tab">Informations</a>
+        <a href="{{ zone }}/chat" routerLinkActive="active-tab"
+          >Discussion zone {{ zone }}</a
+        >
+      </div>
     </div>
   </div>
 </mat-toolbar>
