@@ -3,8 +3,13 @@
 html,
 body {
   height: 100%;
+  background-color: #fff !important; /* Fond blanc */
+  color: #000 !important; /* Texte noir */
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+@import "primeicons/primeicons.css";

@@ -14,7 +14,4 @@ import { MatButtonModule } from '@angular/material/button';
   providers: [],
 })
 export class HeaderComponent   {
-  showFiller = false;
-
-  
 }
