@@ -23,8 +23,8 @@ Demmarer docker compose
 docker-compose up
 ```
 
-###PG admin
-####se connecter:
+### PG admin
+#### se connecter:
 → Lorsque les contenneuirs DOcker sont démmarés, PG admin est accéssible sur l'adresse du serveur au port 5050 (ou un autre port défini dans le .env):
 par exemple localhost:5050
 → Une fois sur PGAdmin se connecter avec les indentifiants définis dans le .env
