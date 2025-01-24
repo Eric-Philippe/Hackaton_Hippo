@@ -9,7 +9,6 @@ import { EnvService } from './env.service';
 })
 export class ChatService {
   private apiUrl: string;
-  //private apiUrl = `${EnvService.apiUrl}:${EnvService.apiPort}/chats`; // Remplacez par l'URL réelle de l'API
 
   constructor(private http: HttpClient, private envService: EnvService) {
     this.apiUrl = `${this.envService.apiUrl}:${this.envService.apiPort}/chats`;
