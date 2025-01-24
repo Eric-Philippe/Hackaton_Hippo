@@ -1,20 +1,14 @@
 <mat-toolbar>
   <div class="header-container">
-    <!-- Titre et image -->
     <div class="top-container">
-      <!-- Titre -->
       <div class="text-container">
         <span class="site-title">ToulouseWatch</span>
         <div class="menu-tabs" *ngIf="showMenu">
-          <button mat-button routerLink="/info" routerLinkActive="active-tab">Informations</button>
-          <button mat-button routerLink="/chat" routerLinkActive="active-tab">Discussion zone 2</button>
+          <button mat-button [routerLink]="['/', zoneId, 'info']" routerLinkActive="active-tab"> Informations</button>
+          <button mat-button [routerLink]="['/', zoneId, 'chat']" routerLinkActive="active-tab">Discussion zone</button>
         </div>
       </div>
-
-
-      <!-- Image à droite -->
-      <div class="image-container"></div>
-
     </div>
+    <div class="image-container"></div>
   </div>
 </mat-toolbar>

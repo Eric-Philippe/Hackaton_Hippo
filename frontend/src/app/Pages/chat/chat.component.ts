@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ChatService } from '../../Services/chat.service';
 import { Message } from '../../Interfaces/message.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -43,7 +44,7 @@ export class ChatComponent implements AfterViewChecked {
 
   messages: Message[] = [];
 
-  constructor(private chatService: ChatService) {
+  constructor(private route: ActivatedRoute, private chatService: ChatService) {
     this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
       this.messages = data;
     });
@@ -70,5 +71,14 @@ export class ChatComponent implements AfterViewChecked {
       isAdmin: false,
     };
     //this.chatService.sendMessage(message).subscribe()
+  }
+
+  zoneId: string | null = null;
+
+  ngOnInit(): void {
+    // Récupère l'ID de la zone depuis l'URL
+    this.zoneId = this.route.snapshot.paramMap.get('zone');
+    console.log('Zone ID pour Chat:', this.zoneId);
+    // Chargez les messages spécifiques à cette zone ici
   }
 }
