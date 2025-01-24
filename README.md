@@ -22,7 +22,7 @@ Demmarer l'application docker compose
 ```sh
 docker-compose up
 ```
-variables d'environnement à mettre dans le fichier .env à la racine du projet (si il n'y est pas déja:
+variables d'environnement à mettre dans le fichier .env à la racine du projet si il n'y est pas déja:
 
 →Postgres:
 PG_USER='postgres'
