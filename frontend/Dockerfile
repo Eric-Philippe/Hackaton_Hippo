@@ -25,6 +25,8 @@ FROM nginx:alpine
 # Copier les fichiers de build depuis l'étape précédente dans le répertoire par défaut de Nginx
 COPY --from=build /app/dist/frontend/browser/ /usr/share/nginx/html
 
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Exposer le port 80 pour que l'application soit accessible via HTTP
 EXPOSE ${FRONT_PORT}
 
