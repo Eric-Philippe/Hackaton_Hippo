@@ -17,6 +17,8 @@ export class DisasterInfoComponent {
   ngOnInit(): void {
     const zone = 1;
     this.infoService.getDisaster(zone).subscribe((data) => {
+      console.log(data);
+
       this.disastersInfo = data;
     });
   }
