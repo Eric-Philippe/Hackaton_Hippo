@@ -80,11 +80,11 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     console.log(this.newMessage);
 
     const message: Message = {
-      username: this.myUsername,
+      user_pseudo: this.myUsername,
       zone: this.zone,
-      content: this.newMessage,
-      time: new Date(),
-      isAdmin: false,
+      message: this.newMessage,
+      date_time: new Date(),
+      is_admin: false,
     };
     this.chatService.sendMessage(message, this.zone).subscribe((data) => {
       console.log(data);
