@@ -1,9 +1,20 @@
 <mat-toolbar>
-    <div class="header-container">
+  <div class="header-container">
+    <!-- Titre et image -->
+    <div class="top-container">
+      <!-- Titre -->
       <div class="text-container">
-        <span>ToulouseWatch</span>
+        <span class="site-title">ToulouseWatch</span>
+        <div class="menu-tabs" *ngIf="showMenu">
+          <button mat-button routerLink="/info" routerLinkActive="active-tab">Informations</button>
+          <button mat-button routerLink="/chat" routerLinkActive="active-tab">Discussion zone 2</button>
+        </div>
       </div>
+
+
+      <!-- Image à droite -->
       <div class="image-container"></div>
+
     </div>
-  </mat-toolbar>
-  
+  </div>
+</mat-toolbar>
