@@ -1,18 +1,11 @@
 const activitiesService = require('../services/Activity.service');
+const alertsService = require('../services/Alert.service');
 
 exports.getActivities = async (req, res) => {
     try {
         const { zone } = req.query;
         const activities = await activitiesService.getActivities(zone);
-        const alert = 
-            {
-                "id": 1,
-                "Title": "Running",
-                "zones": "1, 2, 5",
-                "type": "seisme",
-                "date_time": "2025-23-01T15:00:00.000Z",
-                "niveau": 6
-            };
+        const alert = await alertsService.getAlert(zone);
 
         var filtredActivities = [];
         activities.forEach(function(activity) {
