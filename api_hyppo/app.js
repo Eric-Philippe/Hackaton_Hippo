@@ -14,6 +14,7 @@ const swaggerSpec = swaggerJsdoc(require("./config/swagger.config.js"));
 const chatRoutes = require("./routes/Chat.routes");
 const activityRoutes = require("./routes/Activity.route");
 const alertRoutes = require("./routes/Alert.route");
+const addData = require('./routes/Data.route');
 
 dotenv.config({ path: path.resolve(__dirname, ".env") }); // .env is placed in the root directory of the project
 
@@ -61,6 +62,7 @@ io.on("connection", (socket) => {
 chatRoutes(app);
 activityRoutes(app);
 alertRoutes(app);
+addData(app);
 // ... Autres middlewares
 
 // Si rien n'est trouvé
