@@ -2,7 +2,8 @@ const ChatService = require("../services/Chat.service");
 
 async function getAllChats(req, res) {
     try {
-        const Chats = await ChatService.getAllChats();
+        const { zone } = req.query;
+        const Chats = await ChatService.getAllChats(zone);
         res.status(200).json(Chats);
     } catch (error) {
         res.status(500).json({ error: error.message });

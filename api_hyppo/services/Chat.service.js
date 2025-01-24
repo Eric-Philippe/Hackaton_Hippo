@@ -1,7 +1,11 @@
 const { Chat } = require("../models/index");
 
-async function getAllChats() {
-    return await Chat.findAll();
+async function getAllChats(zone) {
+    return await Chat.findAll({
+        where: { zone: zone },
+        limit: 100,
+        order: [['date_time', 'DESC']]
+    });
 }
 
 async function getChatById(id) {
