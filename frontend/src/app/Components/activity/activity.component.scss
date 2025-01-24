@@ -10,7 +10,7 @@
 
 .activity-card {
   width: 300px; /* Largeur fixe des cartes */
-  height: 250px; /* Hauteur fixe des cartes */
+  height: 310px; /* Hauteur fixe des cartes */
   background-color: #f9f9f9; /* Couleur de fond des cartes */
   border: 1px solid #ccc; /* Bordure légère autour des cartes */
   border-radius: 8px; /* Bords arrondis */
@@ -49,7 +49,7 @@
   width: 10px; /* Diamètre de la pastille */
   height: 10px; /* Diamètre de la pastille */
   border-radius: 50%; /* Forme circulaire */
-  margin-right: 5px; /* Espace entre la pastille et le texte */
+  margin-right: 1px; /* Espace entre la pastille et le texte */
 }
 
 .status-dot.available {
@@ -58,4 +58,29 @@
 
 .status-dot.unavailable {
   background-color: red; /* Couleur rouge pour non disponible */
+}
+.activity-image {
+  display: flex; /* Centre l'image si elle est plus petite */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 100px; /* Hauteur fixe pour le conteneur de l'image */
+  width: 100%; /* Largeur maximale pour le conteneur */
+  overflow: hidden; /* Coupe l'image si elle dépasse */
+  background-color: #f5f5f5; /* Optionnel : Fond gris clair */
+  border-radius: 5px; /* Coins arrondis */
+}
+
+.activity-image img {
+  width: 100%; /* L'image prend toute la largeur du conteneur */
+  height: 100%; /* L'image prend toute la hauteur du conteneur */
+  object-fit: cover; /* L'image est recadrée pour remplir le conteneur */
+}
+
+
+.activity-info .material-icons,
+.activity-info fa-icon {
+  font-size: 20px; /* Ajuste la taille des icônes */
+  vertical-align: middle; /* Aligne les icônes avec le texte */
+  margin-right: 8px; /* Espace entre l'icône et le texte */
+  color: #555; /* Couleur des icônes */
 }
