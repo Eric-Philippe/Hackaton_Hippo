@@ -53,20 +53,27 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.myUsername = this.sessionService.getUsername();
     const path = window.location.pathname.split('/');
 
     if (path.length > 2) {
       this.zone = parseInt(path[1]);
     }
 
-    this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
-      this.messages = data;
-      console.log(this.messages);
-    });
+    this.fetchMessages();
+    setInterval(() => {
+      this.fetchMessages();
+    }, 3000);
   }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
+  }
+
+  fetchMessages(): void {
+    this.chatService.getMessagesByZone(this.zone).subscribe((data) => {
+      this.messages = data;
+    });
   }
 
   scrollToBottom(): void {
@@ -75,10 +82,6 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   }
 
   public sendMessage(): void {
-    this.myUsername = this.sessionService.getUsername();
-    console.log(this.myUsername);
-    console.log(this.newMessage);
-
     const message: Message = {
       user_pseudo: this.myUsername,
       zone: this.zone,
@@ -87,7 +90,15 @@ export class ChatComponent implements AfterViewChecked, OnInit {
       is_admin: false,
     };
     this.chatService.sendMessage(message, this.zone).subscribe((data) => {
-      console.log(data);
+      this.fetchMessages();
     });
+    this.newMessage = '';
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    console.log('aaa');
+    if (event.key === 'Enter') {
+      this.sendMessage();
+    }
   }
 }

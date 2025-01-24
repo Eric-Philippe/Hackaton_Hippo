@@ -20,9 +20,30 @@
 
 .messages {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-username {
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: #007bff;
+  margin-bottom: 5px;
+  align-self: flex-end;
+}
+
+.not-my-username {
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: gray;
+  margin-bottom: 5px;
+  align-self: flex-start;
 }
 
 .my-message {
@@ -59,6 +80,7 @@
 
 .timestamp {
   font-size: 10px;
+  margin-bottom: 1rem;
 }
 
 .new-message {
