@@ -7,9 +7,11 @@ import { EnvService } from './env.service';
   providedIn: 'root',
 })
 export class ActivityService {
-  private apiUrl = 'https://localhost:8001/activitées'; // Remplacez par l'URL réelle de l'API
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private envService: EnvService) {
+    this.apiUrl = `${this.envService.apiUrl}:${this.envService.apiPort}/activity`;
+  }
 
   getActivities(): Observable<Activity[]> {
     return this.http.get<Activity[]>(this.apiUrl);
