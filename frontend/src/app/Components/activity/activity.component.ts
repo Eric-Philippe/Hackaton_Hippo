@@ -15,7 +15,8 @@ export class ActivityComponent {
   constructor(private activityService: ActivityService) {}
 
   ngOnInit(): void {
-    this.activityService.getActivities().subscribe((data) => {
+    const zone = 1; // Replace with the appropriate zone value
+    this.activityService.getActivity(zone).subscribe((data) => {
       this.activities = data;
     });
   }

@@ -6,14 +6,13 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class ActivityService {
-  private apiUrl = 'https://localhost:8001/activitées'; // Remplacez par l'URL réelle de l'API
+  private apiUrl = 'http://localhost:8001/activity'; // Remplacez par l'URL réelle de l'API
 
   constructor(private http: HttpClient) {}
 
-  getActivities(): Observable<Activity[]> {
-    return this.http.get<Activity[]>(this.apiUrl);
+  getActivity(zone: number): Observable<Activity[]> {
+    return this.http.get<Activity[]>(`${this.apiUrl}/?zone=${zone}`);
   }
-
 }
 export interface Activity {
   activity_id: number;
