@@ -19,6 +19,13 @@ Object.keys(models).forEach((modelName) => {
   }
 });
 
+instance.sync({ force: true }).then(() => {
+    console.log("La base de données a été synchronisée avec succès.");
+  })
+  .catch((err) => {
+    console.error("Erreur lors de la synchronisation de la base de données :", err);
+  });
+
 module.exports = {
   instance,
   ...models,
