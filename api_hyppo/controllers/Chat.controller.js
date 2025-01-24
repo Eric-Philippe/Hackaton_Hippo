@@ -4,13 +4,7 @@ const alertsService = require('../services/Alert.service');
 async function getAllChats(req, res) {
     try {
         const { zone } = req.query;
-        const Chats = await ChatService.getAllChats();
-        const alert = await alertsService.getAlert(zone);
-        Chats.forEach(function(activity) {
-            if(activity.type == alert.type) {
-                filtredActivities.push(activity);
-            }
-        });
+        const Chats = await ChatService.getAllChats(zone);
         res.status(200).json(Chats);
     } catch (error) {
         res.status(500).json({ error: error.message });
