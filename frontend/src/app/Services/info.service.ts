@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -6,48 +8,55 @@ import { Injectable } from '@angular/core';
 export class InfoService {
   constructor() {}
 
-  getDisaster(): Observable<[]> {
+  private apiUrl = 'https://api.example.com/activities'; // R
+
+  getDisaster(): Observable<DisasterInfo[]> {
     // Utilisez cette ligne pour appeler l'API réelle
-    // return this.http.get<Activity[]>(this.apiUrl);
+    // return this.http.get<DisasterInfo[]>(this.apiUrl);
 
     // Simulez une réponse avec des données fictives
     return of([
       {
-        activity_id: 1,
-        title: 'Randonnée',
-        description: 'Découvrez la nature en toute sécurité.',
-        url_illustration: '',
-        is_available: true,
-        zone: 'Toulouse',
-        type: 'Seisme',
+        disaster_Id: 1,
+        title: 'innondation',
+        zones: '3',
+        type: 'string',
+        date: '12/01/2180',
+        level: '3',
       },
       {
-        activity_id: 2,
-        title: 'Plongée sous-marine',
-        description: 'Explorez les fonds marins riches.',
-        url_illustration: '',
-        is_available: false,
-        zone: 'La Garonne',
-        type: 'Inondation',
+        disaster_Id: 2,
+        title: 'innondation',
+        zones: '1',
+        type: 'string',
+        date: '12/01/2180',
+        level: '3',
       },
       {
-        activity_id: 3,
-        title: 'Vélo',
-        description: 'Tour de Blagnac',
-        url_illustration: '',
-        is_available: false,
-        zone: 'Blagnac',
-        type: 'Seisme',
+        disaster_Id: 3,
+        title: 'seisme',
+        zones: '3',
+        type: 'string',
+        date: '12/01/2180',
+        level: '3',
       },
       {
-        activity_id: 4,
-        title: 'JetSki',
-        description: 'JetSki sur la Garonne',
-        url_illustration: '',
-        is_available: true,
-        zone: 'Balma',
-        type: 'Inondation',
+        disaster_Id: 4,
+        title: 'seisme',
+        zones: '5',
+        type: 'string',
+        date: '12/01/2180',
+        level: '3',
       },
     ]);
   }
+}
+
+export interface DisasterInfo {
+  disaster_Id: number;
+  title: string;
+  zones: string;
+  type: string;
+  date: string;
+  level: string;
 }

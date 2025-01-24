@@ -23,7 +23,7 @@ export class ActivityService {
         url_illustration: '',
         is_available: true,
         zone: 'Toulouse',
-        type:"Seisme",
+        type: 'Seisme',
       },
       {
         activity_id: 2,
@@ -32,7 +32,7 @@ export class ActivityService {
         url_illustration: '',
         is_available: false,
         zone: 'La Garonne',
-        type:"Inondation",
+        type: 'Inondation',
       },
       {
         activity_id: 3,
@@ -41,15 +41,16 @@ export class ActivityService {
         url_illustration: '',
         is_available: false,
         zone: 'Blagnac',
-        type:"Seisme",
-      },      {
+        type: 'Seisme',
+      },
+      {
         activity_id: 4,
         title: 'JetSki',
         description: 'JetSki sur la Garonne',
         url_illustration: '',
         is_available: true,
         zone: 'Balma',
-        type:"Inondation",
+        type: 'Inondation',
       },
     ]);
   }
@@ -62,5 +63,5 @@ export interface Activity {
   url_illustration: string | null;
   is_available: boolean;
   zone: string;
-  type:string;
+  type: string;
 }
